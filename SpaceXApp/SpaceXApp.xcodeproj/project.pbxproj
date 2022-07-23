@@ -11,6 +11,12 @@
 		C5E1BC2B288B817100A7CB5A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1BC2A288B817100A7CB5A /* SceneDelegate.swift */; };
 		C5E1BC2D288B817100A7CB5A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1BC2C288B817100A7CB5A /* ViewController.swift */; };
 		C5E1BC32288B817200A7CB5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5E1BC31288B817200A7CB5A /* Assets.xcassets */; };
+		C5E1BC42288B87D000A7CB5A /* RocketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1BC41288B87D000A7CB5A /* RocketModel.swift */; };
+		C5E1BC44288B888500A7CB5A /* MeasurementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1BC43288B888500A7CB5A /* MeasurementModel.swift */; };
+		C5E1BC49288B8F6900A7CB5A /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1BC48288B8F6900A7CB5A /* NetworkLayer.swift */; };
+		C5E1BC4B288B943900A7CB5A /* NetworkDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1BC4A288B943900A7CB5A /* NetworkDataFetch.swift */; };
+		C5E1BC4F288B993000A7CB5A /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1BC4E288B993000A7CB5A /* UserAPI.swift */; };
+		C5E1BC51288B9D2E00A7CB5A /* LaunchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1BC50288B9D2E00A7CB5A /* LaunchModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +26,12 @@
 		C5E1BC2C288B817100A7CB5A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C5E1BC31288B817200A7CB5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5E1BC36288B817200A7CB5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5E1BC41288B87D000A7CB5A /* RocketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketModel.swift; sourceTree = "<group>"; };
+		C5E1BC43288B888500A7CB5A /* MeasurementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementModel.swift; sourceTree = "<group>"; };
+		C5E1BC48288B8F6900A7CB5A /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
+		C5E1BC4A288B943900A7CB5A /* NetworkDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetch.swift; sourceTree = "<group>"; };
+		C5E1BC4E288B993000A7CB5A /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		C5E1BC50288B9D2E00A7CB5A /* LaunchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +64,7 @@
 		C5E1BC27288B817100A7CB5A /* SpaceXApp */ = {
 			isa = PBXGroup;
 			children = (
+				C5E1BC3C288B835A00A7CB5A /* Modules */,
 				C5E1BC28288B817100A7CB5A /* AppDelegate.swift */,
 				C5E1BC2A288B817100A7CB5A /* SceneDelegate.swift */,
 				C5E1BC2C288B817100A7CB5A /* ViewController.swift */,
@@ -59,6 +72,75 @@
 				C5E1BC36288B817200A7CB5A /* Info.plist */,
 			);
 			path = SpaceXApp;
+			sourceTree = "<group>";
+		};
+		C5E1BC3C288B835A00A7CB5A /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C5E1BC45288B8E1A00A7CB5A /* Services */,
+				C5E1BC40288B878D00A7CB5A /* Models */,
+				C5E1BC3F288B868400A7CB5A /* Settings */,
+				C5E1BC3E288B867300A7CB5A /* Launches */,
+				C5E1BC3D288B866C00A7CB5A /* Rockets */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		C5E1BC3D288B866C00A7CB5A /* Rockets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Rockets;
+			sourceTree = "<group>";
+		};
+		C5E1BC3E288B867300A7CB5A /* Launches */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Launches;
+			sourceTree = "<group>";
+		};
+		C5E1BC3F288B868400A7CB5A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		C5E1BC40288B878D00A7CB5A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C5E1BC41288B87D000A7CB5A /* RocketModel.swift */,
+				C5E1BC43288B888500A7CB5A /* MeasurementModel.swift */,
+				C5E1BC50288B9D2E00A7CB5A /* LaunchModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C5E1BC45288B8E1A00A7CB5A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C5E1BC47288B8F5200A7CB5A /* UserServices */,
+				C5E1BC46288B8F4700A7CB5A /* NetworkLayer */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C5E1BC46288B8F4700A7CB5A /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				C5E1BC48288B8F6900A7CB5A /* NetworkLayer.swift */,
+				C5E1BC4A288B943900A7CB5A /* NetworkDataFetch.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		C5E1BC47288B8F5200A7CB5A /* UserServices */ = {
+			isa = PBXGroup;
+			children = (
+				C5E1BC4E288B993000A7CB5A /* UserAPI.swift */,
+			);
+			path = UserServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,9 +212,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5E1BC49288B8F6900A7CB5A /* NetworkLayer.swift in Sources */,
 				C5E1BC2D288B817100A7CB5A /* ViewController.swift in Sources */,
+				C5E1BC4B288B943900A7CB5A /* NetworkDataFetch.swift in Sources */,
+				C5E1BC51288B9D2E00A7CB5A /* LaunchModel.swift in Sources */,
+				C5E1BC44288B888500A7CB5A /* MeasurementModel.swift in Sources */,
+				C5E1BC42288B87D000A7CB5A /* RocketModel.swift in Sources */,
 				C5E1BC29288B817100A7CB5A /* AppDelegate.swift in Sources */,
 				C5E1BC2B288B817100A7CB5A /* SceneDelegate.swift in Sources */,
+				C5E1BC4F288B993000A7CB5A /* UserAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
