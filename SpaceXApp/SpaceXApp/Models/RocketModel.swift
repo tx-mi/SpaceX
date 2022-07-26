@@ -19,4 +19,31 @@ struct Rocket: Codable {
     let cost_per_launch: Int
     let first_flight: String
     let country: String
+    
+    // Computed Properties
+    var getPayloadWeights: (String, String) {
+        // TODO: Change to UserDefaults.standart.bool(forKey: payloadWeightIsLb)
+        let payloadWeightIsLb = true
+        
+        if payloadWeightIsLb {
+            return ("\(payload_weights[0].lb)", "Нагрузка, lb")
+        } else {
+            return ("\(payload_weights[0].kg)", "Нагрузка, kg")
+        }
+    }
+    
+    var getFirstFlight: String {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = ""
+        
+        let dateFormatterOut = DateFormatter()
+        dateFormatterOut.dateFormat = ""
+        
+        if let date = dateFormatterGet.date(from: first_flight) {
+            return dateFormatterOut.string(from: date)
+        } else {
+            return "-"
+        }
+        
+    }
 }
