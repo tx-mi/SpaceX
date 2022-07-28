@@ -7,10 +7,16 @@
 
 import Foundation
 
-final class NetworkDataFetch {
+protocol NetworkDataFetchProtocol {
     
-    var networkLayer = NetworkLayer()
+    func fetchRockets(searchTerm: UserAPI, completion: @escaping ([Rocket]?) -> ())
     
+    func fetchLaunches(searchTerm: UserAPI, completion: @escaping ([Launch]?) -> ())
+}
+
+final class NetworkDataFetch: NetworkDataFetchProtocol {
+    
+    private var networkLayer = NetworkLayer()
     
     func fetchRockets(searchTerm: UserAPI, completion: @escaping ([Rocket]?) -> ()) {
         networkLayer.request(searchTerm: searchTerm.path) { data, error in
@@ -35,26 +41,6 @@ final class NetworkDataFetch {
             completion(launches)
         }
     }
-    
-    // TRY implement DRY
-//    func fetchData<T: Decodable>(searchTerm: UserAPI, completion: @escaping ([T]?) -> ()) {
-//        networkLayer.request(searchTerm: searchTerm.path) { data, error in
-//            if let error = error {
-//                print("Error: \(error.localizedDescription)")
-//                completion(nil)
-//            }
-//
-//            completion(self.getObjects(searchTerm: searchTerm, data: data))
-//        }
-//    }
-//    private func getObjects<T: Decodable>(searchTerm: UserAPI, data: Data?) -> T? {
-//        switch searchTerm {
-//        case .getRockets:
-//            return self.decodeJSON(T: [Rocket].self, from: data) as? T
-//        case .getLaunches:
-//            return self.decodeJSON(T: [Launch].self, from: data) as? T
-//        }
-//    }
     
     private func decodeJSON<T: Decodable>(T: T.Type, from: Data?) -> T? {
         let decoder = JSONDecoder()
