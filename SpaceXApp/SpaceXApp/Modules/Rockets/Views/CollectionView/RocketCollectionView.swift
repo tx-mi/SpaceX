@@ -111,8 +111,23 @@ private extension RocketCollectionView {
         guard let cell = dequeueReusableCell(withReuseIdentifier: ImageViewCell.id,
                                              for: indexPath) as? ImageViewCell
         else { return UICollectionViewCell() }
-        guard let rocket = rocket, let image = viewModel.getRandomRocketImage(from: rocket) else { return  cell }
-        cell.configure(image: image)
+        
+        guard
+            let rocket = rocket,
+            let stringUrl = rocket.flickr_images.randomElement(),
+            let url = URL(string: stringUrl)
+        else { return cell }
+        
+        DispatchQueue.global().async {
+            if let data = try? Data(contentsOf: url) {
+                DispatchQueue.main.async {
+                    if let image = UIImage(data: data) {
+                        cell.configure(image: image)
+                    }
+                }
+            }
+        }
+        
         return cell
     }
     

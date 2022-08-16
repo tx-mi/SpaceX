@@ -13,7 +13,7 @@ class LabelHeadlineView: UICollectionReusableView {
     static let kind = "Label"
     
     private enum Constants {
-        static let trailngInset: CGFloat = 10 // Костыль изза специфики SuplementaryView
+        static let trailngInset: CGFloat = 0 // Костыль изза специфики SuplementaryView
         
         static let fontBold: String = "LabGrotesque-Bold"
         static let titleLabelTextSize: CGFloat = 18

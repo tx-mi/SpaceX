@@ -11,8 +11,8 @@ import UIKit
 protocol ViewModelProtocol {
     var rockets: [Rocket] { get }
     var didUpdateRockets: (([Rocket]) -> Void)? { get set }
-    func getRandomRocketImage(from rocket: Rocket) -> UIImage?
     func getRockets()
+    func showSettigns()
 }
 
 final class ViewModel: ViewModelProtocol {
@@ -34,20 +34,6 @@ final class ViewModel: ViewModelProtocol {
 
 extension ViewModel {
     
-    func getRandomRocketImage(from rocket: Rocket) -> UIImage? {
-        guard
-            let stringUrl = rocket.flickr_images.randomElement(),
-            let url = URL(string: stringUrl)
-        else { return nil }
-        
-        if let data = try? Data(contentsOf: url) {
-            if let image = UIImage(data: data) {
-                return image
-            }
-        }
-        return nil
-    }
-    
     func getRockets() {
         guard rockets.count == 0 else { didUpdateRockets?(rockets); return }
         
@@ -57,6 +43,12 @@ extension ViewModel {
                 guard let self = self else { return }
                 self.rockets = rockets ?? []
             })
+    }
+    
+    func showSettigns() {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .red
+        UINavigationController().present(vc, animated: true)
     }
     
 }
