@@ -12,6 +12,8 @@ class HeaderView: UICollectionReusableView {
     static let id = "categoryHeaderID"
     static let kind = "Header"
     
+    var moveTo: ((Screens) -> Void)?
+    
     private enum Constants {
         static let leadingInset: CGFloat = 32
         static let trailngInset: CGFloat = 32
@@ -42,6 +44,7 @@ class HeaderView: UICollectionReusableView {
         roundCorners(corners: [.topLeft, .topRight], radius: 30)
         backgroundColor = .black
         makeConstraints()
+        settingsButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
     override func prepareForReuse() {
@@ -56,6 +59,10 @@ class HeaderView: UICollectionReusableView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+    }
+    
+    @objc private func buttonPressed() {
+        moveTo?(.settings)
     }
     
     private func makeConstraints() {

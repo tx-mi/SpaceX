@@ -19,7 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        window.rootViewController = RocketsPageVC(viewModel: ViewModel())
+        let navController = UINavigationController()
+        let viewModel = ViewModel(navigationContorller: navController)
+        let vc = RocketsPageVC(viewModel: viewModel)
+        navController.pushViewController(vc, animated: false)
+        
+        window.rootViewController = navController
         window.makeKeyAndVisible()
         
         self.window = window

@@ -184,6 +184,9 @@ private extension RocketCollectionView {
             let view = dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.id, for: indexPath) as? HeaderView
         else { return HeaderView() }
         view.configure(rocketName: rocket?.name ?? "")
+        view.moveTo = { [weak self] screen in
+            self?.viewModel.route(to: screen)
+        }
         return view
     }
     
@@ -207,6 +210,10 @@ private extension RocketCollectionView {
         else { return UICollectionReusableView() }
         if indexPath.section != 4 {
             view.isHidden = true
+        } else {
+            view.moveTo = { [weak self] screen in
+                self?.viewModel.route(to: screen)
+            }
         }
         return view
     }

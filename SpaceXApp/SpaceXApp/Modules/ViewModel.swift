@@ -12,12 +12,14 @@ protocol ViewModelProtocol {
     var rockets: [Rocket] { get }
     var didUpdateRockets: (([Rocket]) -> Void)? { get set }
     func getRockets()
-    func showSettigns()
+    func route(to screens: Screens)
 }
 
 final class ViewModel: ViewModelProtocol {
     
     var didUpdateRockets: (([Rocket]) -> Void)?
+    
+    let navigationContorller: UINavigationController
     
     private(set) var rockets: [Rocket] = [Rocket]() {
         didSet {
@@ -27,8 +29,9 @@ final class ViewModel: ViewModelProtocol {
     
     private var network: NetworkDataFetchProtocol?
     
-    init() {
+    init(navigationContorller: UINavigationController) {
         network = NetworkDataFetch()
+        self.navigationContorller = navigationContorller
     }
 }
 
@@ -45,10 +48,17 @@ extension ViewModel {
             })
     }
     
-    func showSettigns() {
+    func route(to screen: Screens) {
         let vc = UIViewController()
-        vc.view.backgroundColor = .red
-        UINavigationController().present(vc, animated: true)
+        
+        switch screen {
+        case .settings:
+            vc.view.backgroundColor = .red
+            navigationContorller.present(vc, animated: true)
+        case .launches:
+            vc.view.backgroundColor = .blue
+            navigationContorller.pushViewController(vc, animated: true)
+        }
     }
     
 }

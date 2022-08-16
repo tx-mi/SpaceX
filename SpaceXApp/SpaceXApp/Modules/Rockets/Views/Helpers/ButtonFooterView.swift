@@ -20,6 +20,8 @@ class ButtonFooterView: UICollectionReusableView {
         static let fontBold: String = "LabGrotesque-Bold"
     }
     
+    var moveTo: ((Screens) -> Void)?
+    
     private let button: UIButton = {
         let button = UIButton()
         button.backgroundColor = .blondGray
@@ -32,13 +34,19 @@ class ButtonFooterView: UICollectionReusableView {
         return button
     }()
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         makeConstraints()
+        button.addTarget(self, action: #selector(moveToLaunches), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func moveToLaunches() {
+        moveTo?(.launches)
     }
     
     private func makeConstraints() {
