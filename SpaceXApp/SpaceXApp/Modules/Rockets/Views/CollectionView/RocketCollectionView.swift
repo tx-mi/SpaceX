@@ -185,7 +185,7 @@ private extension RocketCollectionView {
         else { return HeaderView() }
         view.configure(rocketName: rocket?.name ?? "")
         view.moveTo = { [weak self] screen in
-            self?.viewModel.route(to: screen)
+            self?.viewModel.route(to: screen, rocket: nil)
         }
         return view
     }
@@ -212,7 +212,7 @@ private extension RocketCollectionView {
             view.isHidden = true
         } else {
             view.moveTo = { [weak self] screen in
-                self?.viewModel.route(to: screen)
+                self?.viewModel.route(to: screen, rocket: self?.rocketID)
             }
         }
         return view

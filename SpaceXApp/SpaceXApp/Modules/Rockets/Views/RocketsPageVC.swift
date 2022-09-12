@@ -48,6 +48,7 @@ class RocketsPageVC: UIPageViewController {
             rocketsVC.append(RocketVC(rocketID: i, viewModel: viewModel))
         }
     }
+    
 }
 
 extension RocketsPageVC: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
